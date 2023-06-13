@@ -1,0 +1,54 @@
+import cloneDeep from 'lodash/cloneDeep';
+
+import {
+	CharacteristicsBuff,
+	CharacteristicsBuffInfluenceType,
+	CharacteristicsKeys,
+	CharacteristicsModel,
+	CharacteristicTypeKey,
+} from '@/types/characteristics';
+
+// TODO: подумать над number
+const applyBuff = (
+	charValue: number,
+	buff: CharacteristicsBuff,
+	amountOfCharacteristicsToBuff: number
+): number => {
+	const totalMultiplier = amountOfCharacteristicsToBuff * buff.value;
+	if (!totalMultiplier) {
+		return charValue;
+	}
+
+	switch (buff.influenceType) {
+		case CharacteristicsBuffInfluenceType.Plus:
+			return charValue + totalMultiplier;
+		case CharacteristicsBuffInfluenceType.Minus:
+			return charValue - totalMultiplier;
+		case CharacteristicsBuffInfluenceType.Multiply:
+			return charValue * totalMultiplier;
+		case CharacteristicsBuffInfluenceType.Divide:
+			return charValue / totalMultiplier;
+	}
+};
+
+const calcWithBuffs = (
+	characteristics: CharacteristicsModel,
+	buffs: Record<CharacteristicsKeys, CharacteristicsBuff[]>
+): CharacteristicsModel => {
+	const newCharacteristics = cloneDeep(characteristics);
+	for (const charName in buffs) {
+		const characteristicBuffs: CharacteristicsBuff[] =
+			buffs[charName as CharacteristicsKeys];
+		characteristicBuffs.forEach((buff) => {
+			newCharacteristics[buff.influenceOn] = applyBuff(
+				newCharacteristics[buff.influenceOn],
+				buff,
+				newCharacteristics[charName as CharacteristicTypeKey]
+			);
+		});
+	}
+
+	return newCharacteristics;
+};
+
+export { calcWithBuffs };

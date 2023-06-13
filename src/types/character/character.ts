@@ -1,5 +1,12 @@
-import {CharacteristicsModel} from "@/types/";
+import { CharacteristicsModel } from '@/types/characteristics';
+import { EquipmentSlots } from '@/types/equipment/slots';
 
-interface CharacterModel {
-    characteristics: CharacteristicsModel
+export interface CharacterModel {
+	characteristics: CharacteristicsModel;
+	equipment: EquipmentSlots;
+	level: number;
+	experience: number;
+	gold: number;
+	currentHitPoints: CharacteristicsModel['hitPoints'];
+	currentMana: CharacteristicsModel['mana'];
 }
