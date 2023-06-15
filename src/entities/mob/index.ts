@@ -1,10 +1,10 @@
-import cloneDeep from 'lodash/cloneDeep';
-
 import { MobModel } from '@/types/mob';
 import { CharacteristicsModel } from '@/types/characteristics';
+import { BaseCharacter } from '@/entities/character/base-character';
 
-export class Mob implements MobModel {
+export class Mob extends BaseCharacter implements MobModel {
 	constructor(
+		id: string,
 		characteristics: CharacteristicsModel,
 		{
 			goldReward,
@@ -14,17 +14,13 @@ export class Mob implements MobModel {
 			experienceReward: MobModel['experienceReward'];
 		}
 	) {
-		this.characteristics = cloneDeep(characteristics);
-		this.currentHitPoints = characteristics.hitPoints;
-		this.currentMana = characteristics.mana;
+		super(characteristics, id);
+		this.id = id;
 		this.experienceReward = experienceReward;
 		this.goldReward = goldReward;
 	}
 
-	characteristics: CharacteristicsModel;
-	currentHitPoints: CharacteristicsModel['hitPoints'];
-	currentMana: CharacteristicsModel['mana'];
-
+	id: string;
 	goldReward: number;
 	experienceReward: number;
 }

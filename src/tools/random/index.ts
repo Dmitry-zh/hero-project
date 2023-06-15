@@ -8,7 +8,7 @@ const roll = () => Math.trunc(Math.random() * 100);
  * @returns Boolean - is lucky or not
  */
 const rollChance = (percentage: number): boolean => {
-	return percentage <= roll();
+	return percentage >= roll();
 };
 
 export { rollChance };

@@ -1,10 +1,5 @@
-import { CharacteristicsModel } from '@/types/characteristics';
-
 export interface MobModel {
-	characteristics: CharacteristicsModel;
-	currentHitPoints: CharacteristicsModel['hitPoints'];
-	currentMana: CharacteristicsModel['mana'];
-
+	id: string;
 	goldReward: number;
 	experienceReward: number;
 }

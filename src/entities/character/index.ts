@@ -1,5 +1,3 @@
-import cloneDeep from 'lodash/cloneDeep';
-
 import { CharacterModel } from '@/types/character';
 import { CharacteristicsModel } from '@/types/characteristics';
 import { EquipmentSlots } from '@/types/equipment/slots';
@@ -7,26 +5,29 @@ import { calcWithBuffs } from '@/tools/characteristics';
 import { CHARACTERISTICS_BONUSES } from '@/constants/characteristics';
 import { SkillModel } from '@/types/skill/skill';
 import { weaponAttack } from '@/entities/skill/weapon-attack';
+import { calcDamage } from '@/features/battle';
+import { BaseCharacter } from '@/entities/character/base-character';
+import { Mob } from '@/entities/mob';
 
-class Character implements CharacterModel {
+class Character extends BaseCharacter implements CharacterModel {
 	constructor({
+		id,
 		characteristics,
 		equipment,
 		level,
 		experience,
 		gold,
 	}: CharacterModel) {
-		this._characteristics = cloneDeep(characteristics);
+		super(characteristics, id);
+		this.id = id;
 		this.equipment = equipment;
 		this.level = level;
 		this.experience = experience;
 		this.gold = gold;
 		this.skills = [weaponAttack];
-		this.currentHitPoints = characteristics.hitPoints;
-		this.currentMana = characteristics.mana;
 	}
 
-	get characteristics(): CharacteristicsModel {
+	public get characteristics(): CharacteristicsModel {
 		const withSelfCharsBonuses = calcWithBuffs(
 			this._characteristics,
 			CHARACTERISTICS_BONUSES
@@ -35,13 +36,28 @@ class Character implements CharacterModel {
 		return withSelfCharsBonuses;
 	}
 
-	protected _characteristics: CharacteristicsModel;
+	public useSkill(skill: SkillModel, target: Mob | Character) {
+		const { damage, payload } = calcDamage(
+			this.characteristics,
+			skill,
+			target.characteristics
+		);
+		target.getDamage(damage, this);
+	}
+
+	protected _getReward(slayedCharacter: Mob): BaseCharacter {
+		const reward = super._getReward(slayedCharacter) as Mob;
+		this.experience += reward.experienceReward;
+		this.gold += reward.goldReward;
+
+		return reward;
+	}
+
+	id: string;
 	equipment: EquipmentSlots;
 	level: number;
 	experience: number;
 	gold: number;
-	currentHitPoints: CharacteristicsModel['hitPoints'];
-	currentMana: CharacteristicsModel['mana'];
 	skills: SkillModel[];
 }
 
