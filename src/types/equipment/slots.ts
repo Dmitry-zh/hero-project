@@ -8,6 +8,6 @@ export enum EquipmentSlot {
 	Gloves = 'gloves',
 	Belt = 'belt',
 	Pants = 'pants',
-	Shoulders = 'pants',
+	Shoulders = 'shoulders',
 }
 export type EquipmentSlots = Record<EquipmentSlot, Nullable<EquipmentModel>>;

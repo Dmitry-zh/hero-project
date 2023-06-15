@@ -1,3 +1,5 @@
+import cloneDeep from 'lodash/cloneDeep';
+
 import { CharacterModel } from '@/types/character';
 import { CharacteristicsModel } from '@/types/characteristics';
 import { EquipmentSlots } from '@/types/equipment/slots';
@@ -11,16 +13,14 @@ class Character implements CharacterModel {
 		level,
 		experience,
 		gold,
-		currentHitPoints,
-		currentMana,
 	}: CharacterModel) {
-		this._characteristics = characteristics;
+		this._characteristics = cloneDeep(characteristics);
 		this.equipment = equipment;
 		this.level = level;
 		this.experience = experience;
 		this.gold = gold;
-		this.currentHitPoints = currentHitPoints;
-		this.currentMana = currentMana;
+		this.currentHitPoints = characteristics.hitPoints;
+		this.currentMana = characteristics.mana;
 	}
 
 	get characteristics(): CharacteristicsModel {
@@ -32,7 +32,7 @@ class Character implements CharacterModel {
 		return withSelfCharsBonuses;
 	}
 
-	_characteristics: CharacteristicsModel;
+	protected _characteristics: CharacteristicsModel;
 	equipment: EquipmentSlots;
 	level: number;
 	experience: number;

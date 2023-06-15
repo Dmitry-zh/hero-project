@@ -6,13 +6,13 @@ import {
 	CharacteristicsKeys,
 	CharacteristicsModel,
 	CharacteristicTypeKey,
+	CharacteristicValue,
 } from '@/types/characteristics';
 
-// TODO: подумать над number
 const applyBuff = (
-	charValue: number,
+	charValue: CharacteristicValue,
 	buff: CharacteristicsBuff,
-	amountOfCharacteristicsToBuff: number
+	amountOfCharacteristicsToBuff: CharacteristicValue
 ): number => {
 	const totalMultiplier = amountOfCharacteristicsToBuff * buff.value;
 	if (!totalMultiplier) {

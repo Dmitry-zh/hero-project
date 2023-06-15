@@ -1,4 +1,7 @@
-import { CharacteristicTypeKey } from '@/types/characteristics/characteristics';
+import {
+	CharacteristicTypeKey,
+	CharacteristicValue,
+} from '@/types/characteristics/characteristics';
 
 export enum CharacteristicsBuffInfluenceType {
 	Plus = 'plus',
@@ -10,6 +13,5 @@ export enum CharacteristicsBuffInfluenceType {
 export interface CharacteristicsBuff {
 	influenceOn: CharacteristicTypeKey;
 	influenceType: CharacteristicsBuffInfluenceType;
-	// TODO: возможно тут будет другое значение
-	value: number;
+	value: CharacteristicValue;
 }

@@ -26,25 +26,27 @@ export type CharacteristicTypeKey =
 	| BaseCharacteristicsKeys
 	| CharacteristicsPossibilitiesKeys;
 
+export type CharacteristicValue = number;
+
 export interface CharacteristicsModel
-	extends Record<CharacteristicTypeKey, number> {
+	extends Record<CharacteristicTypeKey, CharacteristicValue> {
 	// base
-	[BaseCharacteristicsKeys.HitPoints]: number;
-	[BaseCharacteristicsKeys.Mana]: number;
-	[BaseCharacteristicsKeys.PhysicalAttack]: number;
-	[BaseCharacteristicsKeys.MagicalAttack]: number;
-	[BaseCharacteristicsKeys.PhysicalDefense]: number;
-	[BaseCharacteristicsKeys.MagicalDefense]: number;
+	[BaseCharacteristicsKeys.HitPoints]: CharacteristicValue;
+	[BaseCharacteristicsKeys.Mana]: CharacteristicValue;
+	[BaseCharacteristicsKeys.PhysicalAttack]: CharacteristicValue;
+	[BaseCharacteristicsKeys.MagicalAttack]: CharacteristicValue;
+	[BaseCharacteristicsKeys.PhysicalDefense]: CharacteristicValue;
+	[BaseCharacteristicsKeys.MagicalDefense]: CharacteristicValue;
 
 	// characteristics
-	[CharacteristicsKeys.Intelligence]: number;
-	[CharacteristicsKeys.Strength]: number;
-	[CharacteristicsKeys.Vitality]: number;
-	[CharacteristicsKeys.Agility]: number;
-	[CharacteristicsKeys.Mentality]: number;
+	[CharacteristicsKeys.Intelligence]: CharacteristicValue;
+	[CharacteristicsKeys.Strength]: CharacteristicValue;
+	[CharacteristicsKeys.Vitality]: CharacteristicValue;
+	[CharacteristicsKeys.Agility]: CharacteristicValue;
+	[CharacteristicsKeys.Mentality]: CharacteristicValue;
 
 	// possibilities
-	[CharacteristicsPossibilitiesKeys.BlockChance]: number;
-	[CharacteristicsPossibilitiesKeys.AvoidChance]: number;
-	[CharacteristicsPossibilitiesKeys.CriticalPhysicalAttackChance]: number;
+	[CharacteristicsPossibilitiesKeys.BlockChance]: CharacteristicValue;
+	[CharacteristicsPossibilitiesKeys.AvoidChance]: CharacteristicValue;
+	[CharacteristicsPossibilitiesKeys.CriticalPhysicalAttackChance]: CharacteristicValue;
 }
