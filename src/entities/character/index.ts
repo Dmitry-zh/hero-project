@@ -5,6 +5,8 @@ import { CharacteristicsModel } from '@/types/characteristics';
 import { EquipmentSlots } from '@/types/equipment/slots';
 import { calcWithBuffs } from '@/tools/characteristics';
 import { CHARACTERISTICS_BONUSES } from '@/constants/characteristics';
+import { SkillModel } from '@/types/skill/skill';
+import { weaponAttack } from '@/entities/skill/weapon-attack';
 
 class Character implements CharacterModel {
 	constructor({
@@ -19,6 +21,7 @@ class Character implements CharacterModel {
 		this.level = level;
 		this.experience = experience;
 		this.gold = gold;
+		this.skills = [weaponAttack];
 		this.currentHitPoints = characteristics.hitPoints;
 		this.currentMana = characteristics.mana;
 	}
@@ -39,6 +42,7 @@ class Character implements CharacterModel {
 	gold: number;
 	currentHitPoints: CharacteristicsModel['hitPoints'];
 	currentMana: CharacteristicsModel['mana'];
+	skills: SkillModel[];
 }
 
 export default Character;
