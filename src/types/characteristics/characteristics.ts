@@ -1,21 +1,52 @@
-export interface CharacteristicsModel {
+export enum BaseCharacteristicsKeys {
+	HitPoints = 'hitPoints',
+	Mana = 'mana',
+	PhysicalAttack = 'physicalAttack',
+	MagicalAttack = 'magicalAttack',
+	PhysicalDefense = 'physicalDefence',
+	MagicalDefense = 'magicalDefence',
+}
+
+export enum CharacteristicsKeys {
+	Intelligence = 'intelligence',
+	Strength = 'strength',
+	Vitality = 'vitality',
+	Agility = 'agility',
+	Mentality = 'mentality',
+}
+
+export enum CharacteristicsPossibilitiesKeys {
+	BlockChance = 'blockChance',
+	AvoidChance = 'avoidChance',
+	CriticalPhysicalAttackChance = 'criticalPhysicalAttackChance',
+}
+
+export type CharacteristicTypeKey =
+	| CharacteristicsKeys
+	| BaseCharacteristicsKeys
+	| CharacteristicsPossibilitiesKeys;
+
+export type CharacteristicValue = number;
+
+export interface CharacteristicsModel
+	extends Record<CharacteristicTypeKey, CharacteristicValue> {
 	// base
-	hitPoints: number;
-	mana: number;
-	physicalAttack: number;
-	magicalAttack: number;
-	physicalDefence: number;
-	magicalDefence: number;
+	[BaseCharacteristicsKeys.HitPoints]: CharacteristicValue;
+	[BaseCharacteristicsKeys.Mana]: CharacteristicValue;
+	[BaseCharacteristicsKeys.PhysicalAttack]: CharacteristicValue;
+	[BaseCharacteristicsKeys.MagicalAttack]: CharacteristicValue;
+	[BaseCharacteristicsKeys.PhysicalDefense]: CharacteristicValue;
+	[BaseCharacteristicsKeys.MagicalDefense]: CharacteristicValue;
 
 	// characteristics
-	intelligence: number;
-	strength: number;
-	vitality: number;
-	agility: number;
-	mentality: number;
+	[CharacteristicsKeys.Intelligence]: CharacteristicValue;
+	[CharacteristicsKeys.Strength]: CharacteristicValue;
+	[CharacteristicsKeys.Vitality]: CharacteristicValue;
+	[CharacteristicsKeys.Agility]: CharacteristicValue;
+	[CharacteristicsKeys.Mentality]: CharacteristicValue;
 
 	// possibilities
-	blockChance: number;
-	avoidChance: number;
-	criticalPhysicalAttackChance: number;
+	[CharacteristicsPossibilitiesKeys.BlockChance]: CharacteristicValue;
+	[CharacteristicsPossibilitiesKeys.AvoidChance]: CharacteristicValue;
+	[CharacteristicsPossibilitiesKeys.CriticalPhysicalAttackChance]: CharacteristicValue;
 }
