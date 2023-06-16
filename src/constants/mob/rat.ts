@@ -19,6 +19,7 @@ const ratMob = (): Mob =>
 			avoidChance: 5,
 			criticalPhysicalAttackChance: 0,
 		},
+		[],
 		{
 			goldReward: 2,
 			experienceReward: 5,

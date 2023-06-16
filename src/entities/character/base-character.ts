@@ -1,6 +1,9 @@
 import { CharacteristicsModel } from '@/types/characteristics';
 import cloneDeep from 'lodash/cloneDeep';
-import { DamageValue } from '@/types/skill/skill';
+import { DamageValue, SkillModel } from '@/types/skill/skill';
+import { Mob } from '@/entities/mob';
+import { calcDamage } from '@/features/battle';
+import Character from '@/entities/character/index';
 
 export abstract class BaseCharacter {
 	protected constructor(characteristics: CharacteristicsModel, _id: string) {
@@ -9,6 +12,7 @@ export abstract class BaseCharacter {
 		this._currentHitPoints = characteristics.hitPoints;
 		this.currentMana = characteristics.mana;
 		this._enemies = [];
+		this.skills = [];
 	}
 
 	public get characteristics(): CharacteristicsModel {
@@ -35,6 +39,15 @@ export abstract class BaseCharacter {
 		this._processDeath();
 	}
 
+	public useSkill(skill: SkillModel, target: Mob | Character) {
+		const { damage, payload } = calcDamage(
+			this.characteristics,
+			skill,
+			target.characteristics
+		);
+		target.getDamage(damage, this);
+	}
+
 	private _processDeath(): void {
 		if (this.currentHitPoints <= 0) {
 			this._onDeath();
@@ -54,5 +67,6 @@ export abstract class BaseCharacter {
 	protected _characteristics: CharacteristicsModel;
 	protected _currentHitPoints: CharacteristicsModel['hitPoints'];
 	private _enemies: BaseCharacter[];
+	public skills: SkillModel[];
 	public currentMana: CharacteristicsModel['mana'];
 }

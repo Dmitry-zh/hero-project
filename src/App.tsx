@@ -1,43 +1,51 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import { createNewCharacter } from '@/features/character';
 import { ratMob } from '@/constants/mob';
-import { SkillModel } from '@/types/skill/skill';
-import Character from '@/entities/character';
+import { useMobFight } from '@/features/battle/hooks';
+import PointsBar from '@/components/interface/battle/bars/PointsBar';
 
 const App: React.FC = () => {
-	const [character] = useState<Character>(createNewCharacter());
-	const [rat] = useState(ratMob());
-	const [i, setI] = useState(1);
+	const [character] = useState(createNewCharacter());
+	const [mob] = useState(ratMob());
+	const onWin = () => {
+		alert('win');
+	};
 
-	const useSkill = useCallback(
-		(skill: SkillModel) => {
-			character.useSkill(skill, rat);
-			setI(Math.random());
-		},
-		[character, rat, i]
-	);
+	const onLoose = () => {
+		alert('loose');
+	};
+
+	const { useCharacterSkill } = useMobFight(character, mob, {
+		onFightWin: onWin,
+		onFightLoose: onLoose,
+	});
 
 	return (
-		<>
+		<div>
 			<div>
-				<div className="test" key={i}>
+				<div className="test">
+					<PointsBar
+						current={character.currentHitPoints}
+						max={character.characteristics.hitPoints}
+						color="red"
+					/>
 					<div className="player">player hp: {character.currentHitPoints}</div>
 					<div>vs</div>
-					<div className="mob">rat hp: {rat.currentHitPoints}</div>
+					<div className="mob">rat hp: {mob.currentHitPoints}</div>
 				</div>
 				<div>
 					<span>скиллы</span>
 					{character.skills.map((skill) => {
 						return (
-							<div key={skill.id} onClick={() => useSkill(skill)}>
+							<div key={skill.id} onClick={() => useCharacterSkill(skill)}>
 								{skill.id}
 							</div>
 						);
 					})}
 				</div>
-				<div>{JSON.stringify(character)}</div>
+				<div>d</div>
 			</div>
-		</>
+		</div>
 	);
 };
 

@@ -3,9 +3,7 @@ import { CharacteristicsModel } from '@/types/characteristics';
 import { EquipmentSlots } from '@/types/equipment/slots';
 import { calcWithBuffs } from '@/tools/characteristics';
 import { CHARACTERISTICS_BONUSES } from '@/constants/characteristics';
-import { SkillModel } from '@/types/skill/skill';
 import { weaponAttack } from '@/entities/skill/weapon-attack';
-import { calcDamage } from '@/features/battle';
 import { BaseCharacter } from '@/entities/character/base-character';
 import { Mob } from '@/entities/mob';
 
@@ -36,15 +34,6 @@ class Character extends BaseCharacter implements CharacterModel {
 		return withSelfCharsBonuses;
 	}
 
-	public useSkill(skill: SkillModel, target: Mob | Character) {
-		const { damage, payload } = calcDamage(
-			this.characteristics,
-			skill,
-			target.characteristics
-		);
-		target.getDamage(damage, this);
-	}
-
 	protected _getReward(slayedCharacter: Mob): BaseCharacter {
 		const reward = super._getReward(slayedCharacter) as Mob;
 		this.experience += reward.experienceReward;
@@ -58,7 +47,6 @@ class Character extends BaseCharacter implements CharacterModel {
 	level: number;
 	experience: number;
 	gold: number;
-	skills: SkillModel[];
 }
 
 export default Character;
