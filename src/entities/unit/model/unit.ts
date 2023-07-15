@@ -1,6 +1,6 @@
 import cloneDeep from 'lodash/cloneDeep'
 
-import { weaponAttack } from '~/entities/skill'
+import { fireball, weaponAttack } from '~/entities/skill'
 import { CharacteristicsModel } from 'src/shared/model/characteristics'
 import { SkillModel } from 'src/shared/model/skill'
 
@@ -10,7 +10,7 @@ export abstract class UnitModel {
     this._characteristics = cloneDeep(characteristics)
     this._currentHitPoints = characteristics.hitPoints
     this._currentMana = characteristics.mana
-    this.skills = [weaponAttack]
+    this.skills = [weaponAttack, fireball]
   }
 
   public get characteristics(): CharacteristicsModel {

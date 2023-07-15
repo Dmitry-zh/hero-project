@@ -12,9 +12,9 @@ const App: React.FC = () => {
           new PlayerModel(
             {
               hitPoints: 1000,
-              mana: 0,
+              mana: 100,
               physicalAttack: 5,
-              magicalAttack: 0,
+              magicalAttack: 12,
               physicalDefence: 3,
               magicalDefence: 1,
               intelligence: 0,

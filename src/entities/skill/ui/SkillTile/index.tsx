@@ -10,7 +10,7 @@ type Props = {
 function SkillTile({ skill, onApplied }: Props) {
   return (
     <S.Container onClick={() => onApplied?.(skill)}>
-      <div>{skill.id}</div>
+      <S.Icon src={skill.iconSrc} alt={skill.id} />
     </S.Container>
   )
 }
