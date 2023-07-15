@@ -1,5 +1,5 @@
-import { CharacteristicsModel } from '~/shared/characteristics';
-import { DamageType, SkillModel } from '~/shared/skill';
+import { CharacteristicsModel } from 'src/shared/model/characteristics'
+import { DamageType, SkillModel } from 'src/shared/model/skill'
 
 const heal: SkillModel = {
   id: 'heal',
@@ -9,9 +9,11 @@ const heal: SkillModel = {
   canAvoid: false,
   hasCriticalDamage: false,
   // минус чтобы нанести отрицательный урон
-  damageValue: (characteristics: CharacteristicsModel) => -characteristics.magicalAttack,
+  damageValue: (characteristics: CharacteristicsModel) =>
+    -characteristics.magicalAttack,
   coolDownTurns: 2,
-  manaCost: 10
-};
+  manaCost: 10,
+  iconSrc: 'icons/skills/healing.png',
+}
 
-export { heal };
+export { heal }

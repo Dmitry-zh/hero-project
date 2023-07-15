@@ -1,5 +1,5 @@
-import { CharacteristicsModel } from '~/shared/characteristics';
-import { DamageType, SkillModel } from '~/shared/skill/model';
+import { CharacteristicsModel } from 'src/shared/model/characteristics'
+import { DamageType, SkillModel } from '~/shared/model/skill'
 const weaponAttack: SkillModel = {
   id: 'weaponAttack',
   damageType: DamageType.Physical,
@@ -7,9 +7,11 @@ const weaponAttack: SkillModel = {
   canBlock: true,
   canAvoid: true,
   hasCriticalDamage: true,
-  damageValue: (characteristics: CharacteristicsModel) => characteristics.physicalAttack,
+  damageValue: (characteristics: CharacteristicsModel) =>
+    characteristics.physicalAttack,
   coolDownTurns: 0,
-  manaCost: 0
-};
+  manaCost: 0,
+  iconSrc: 'icons/skills/sword.png',
+}
 
-export { weaponAttack };
+export { weaponAttack }

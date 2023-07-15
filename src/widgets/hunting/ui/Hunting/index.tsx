@@ -1,15 +1,16 @@
-import { FighterTile } from '~/features/battle';
-import { PlayerModel } from '~/entities/player';
-import { MobModel } from '~/entities/mob';
-import { useHunting } from '~/widgets/hunting/model';
+import { FighterTile } from '~/features/battle'
+import { PlayerModel } from '~/entities/player'
+import { MobModel } from '~/entities/mob'
+
+import { useHunting } from '../../model'
 
 interface Props {
-  player: PlayerModel;
-  mob: MobModel;
+  player: PlayerModel
+  mob: MobModel
 }
 
 function Hunting({ player, mob }: Props) {
-  const { onPlayerAppliedSkill, turn } = useHunting({ player, mob });
+  const { onPlayerAppliedSkill, turn } = useHunting({ player, mob })
 
   return (
     <div>
@@ -17,7 +18,7 @@ function Hunting({ player, mob }: Props) {
       <FighterTile fighter={player} onSkillApplied={onPlayerAppliedSkill} />
       <FighterTile fighter={mob} />
     </div>
-  );
+  )
 }
 
-export { Hunting };
+export { Hunting }

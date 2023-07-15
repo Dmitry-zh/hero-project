@@ -1,1 +1,1 @@
-export * from './SkillTile';
+export * from './SkillTile'

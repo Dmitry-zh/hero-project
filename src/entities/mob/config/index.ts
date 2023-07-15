@@ -1,1 +1,1 @@
-export * from './rat';
+export * from './rat'

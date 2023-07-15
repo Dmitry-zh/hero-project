@@ -1,3 +1,3 @@
-export * from './fireball';
-export * from './heal';
-export * from './weapon-attack';
+export * from './fireball'
+export * from './heal'
+export * from './weapon-attack'

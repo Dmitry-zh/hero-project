@@ -1,1 +1,1 @@
-export * from './apply-skill';
+export * from './apply-skill'

@@ -1,4 +1,4 @@
-import { MobModel } from '../model';
+import { MobModel } from '../model'
 
 const ratMob = (): MobModel =>
   new MobModel(
@@ -16,9 +16,9 @@ const ratMob = (): MobModel =>
       mentality: 0,
       blockChance: 5,
       avoidChance: 5,
-      criticalPhysicalAttackChance: 0
+      criticalPhysicalAttackChance: 0,
     },
-    'rat'
-  );
+    'rat',
+  )
 
-export { ratMob };
+export { ratMob }

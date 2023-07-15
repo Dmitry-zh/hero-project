@@ -1,16 +1,16 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useState } from 'react'
 
 const useFightTurn = () => {
-  const [turn, setTurn] = useState(0);
+  const [turn, setTurn] = useState(0)
 
   const incrementTurn = useCallback(() => {
-    setTurn((prev) => prev + 1);
-  }, [setTurn]);
+    setTurn((prev) => prev + 1)
+  }, [setTurn])
 
   return {
     turn,
-    incrementTurn
-  };
-};
+    incrementTurn,
+  }
+}
 
-export { useFightTurn };
+export { useFightTurn }

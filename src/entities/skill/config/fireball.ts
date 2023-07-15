@@ -1,5 +1,5 @@
-import { CharacteristicsModel } from '~/shared/characteristics';
-import { DamageType, SkillModel } from '~/shared/skill';
+import { CharacteristicsModel } from 'src/shared/model/characteristics'
+import { DamageType, SkillModel } from 'src/shared/model/skill'
 
 const fireball: SkillModel = {
   id: 'fireball',
@@ -8,9 +8,11 @@ const fireball: SkillModel = {
   canBlock: false,
   canAvoid: true,
   hasCriticalDamage: false,
-  damageValue: (characteristics: CharacteristicsModel) => characteristics.magicalAttack,
+  damageValue: (characteristics: CharacteristicsModel) =>
+    characteristics.magicalAttack,
   coolDownTurns: 0,
-  manaCost: 5
-};
+  manaCost: 5,
+  iconSrc: 'icons/skills/fireball.png',
+}
 
-export { fireball };
+export { fireball }

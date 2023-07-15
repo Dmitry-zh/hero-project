@@ -1,1 +1,1 @@
-export * from './FighterTile';
+export * from './FighterTile'

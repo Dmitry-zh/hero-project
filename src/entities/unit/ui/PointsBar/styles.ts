@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.div`
   width: 100%;
@@ -6,11 +6,11 @@ export const Container = styled.div`
   background-color: gray;
   border: 1px solid black;
   border-radius: 4px;
-`;
+`
 
 interface OverlayProps {
-  $color: CSSStyleDeclaration['backgroundColor'];
-  $percentage: number;
+  $color: CSSStyleDeclaration['backgroundColor']
+  $percentage: number
 }
 
 export const CaptionWithOverlay = styled.div<OverlayProps>`
@@ -22,4 +22,4 @@ export const CaptionWithOverlay = styled.div<OverlayProps>`
   transition: background 0.2s ease;
   text-align: center;
   color: #fff;
-`;
+`

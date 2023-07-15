@@ -1,17 +1,17 @@
-import React, { useMemo } from 'react';
+import React, { useMemo } from 'react'
 
-import { CharacteristicValue } from '~/shared/characteristics';
+import { CharacteristicValue } from 'src/shared/model/characteristics'
 
-import * as S from './styles';
+import * as S from './styles'
 
 interface Props {
-  current: CharacteristicValue;
-  max: CharacteristicValue;
-  color: CSSStyleDeclaration['backgroundColor'];
+  current: CharacteristicValue
+  max: CharacteristicValue
+  color: CSSStyleDeclaration['backgroundColor']
 }
 
 function PointsBar({ current, max, color }: Props) {
-  const percent = useMemo(() => (current / max) * 100, [current, max]);
+  const percent = useMemo(() => (current / max) * 100, [current, max])
 
   return (
     <S.Container>
@@ -19,7 +19,7 @@ function PointsBar({ current, max, color }: Props) {
         {current} / {max}
       </S.CaptionWithOverlay>
     </S.Container>
-  );
+  )
 }
 
-export { PointsBar };
+export { PointsBar }

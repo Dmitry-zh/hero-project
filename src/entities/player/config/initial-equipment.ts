@@ -1,4 +1,4 @@
-import { EquipmentSlots, EquipmentSlot } from '~/shared/equipment';
+import { EquipmentSlots, EquipmentSlot } from 'src/shared/model/equipment'
 
 const INITIAL_CHARACTER_EQUIPMENT: EquipmentSlots = {
   [EquipmentSlot.Weapon]: null,
@@ -7,7 +7,7 @@ const INITIAL_CHARACTER_EQUIPMENT: EquipmentSlots = {
   [EquipmentSlot.Gloves]: null,
   [EquipmentSlot.Belt]: null,
   [EquipmentSlot.Pants]: null,
-  [EquipmentSlot.Shoulders]: null
-};
+  [EquipmentSlot.Shoulders]: null,
+}
 
-export { INITIAL_CHARACTER_EQUIPMENT };
+export { INITIAL_CHARACTER_EQUIPMENT }

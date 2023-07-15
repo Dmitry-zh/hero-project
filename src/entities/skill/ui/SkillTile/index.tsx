@@ -1,16 +1,18 @@
-import { SkillModel } from '~/shared/skill';
+import { SkillModel } from 'src/shared/model/skill'
+
+import * as S from './styles'
 
 type Props = {
-  skill: SkillModel;
-  onApplied?: (skill: SkillModel) => void;
-};
+  skill: SkillModel
+  onApplied?: (skill: SkillModel) => void
+}
 
 function SkillTile({ skill, onApplied }: Props) {
   return (
-    <div onClick={() => onApplied?.(skill)}>
+    <S.Container onClick={() => onApplied?.(skill)}>
       <div>{skill.id}</div>
-    </div>
-  );
+    </S.Container>
+  )
 }
 
-export { SkillTile };
+export { SkillTile }

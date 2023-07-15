@@ -1,2 +1,2 @@
-export * from './initial-characteristics';
-export * from './initial-equipment';
+export * from './initial-characteristics'
+export * from './initial-equipment'

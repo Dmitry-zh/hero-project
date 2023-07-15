@@ -1,4 +1,4 @@
-import { CharacteristicsModel } from '~/shared/characteristics';
+import { CharacteristicsModel } from 'src/shared/model/characteristics'
 
 const INITIAL_PLAYER_CHARACTERISTICS: CharacteristicsModel = {
   // base
@@ -19,7 +19,7 @@ const INITIAL_PLAYER_CHARACTERISTICS: CharacteristicsModel = {
   // possibilities
   blockChance: 0,
   avoidChance: 0,
-  criticalPhysicalAttackChance: 0
-};
+  criticalPhysicalAttackChance: 0,
+}
 
-export { INITIAL_PLAYER_CHARACTERISTICS };
+export { INITIAL_PLAYER_CHARACTERISTICS }

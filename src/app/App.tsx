@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
-import { Hunting } from '~/widgets/hunting';
-import { PlayerModel } from '~/entities/player';
-import { ratMob } from '~/entities/mob';
+import { Hunting } from '~/widgets/hunting'
+import { PlayerModel } from '~/entities/player'
+import { ratMob } from '~/entities/mob'
 
 const App: React.FC = () => {
   return (
@@ -24,15 +24,15 @@ const App: React.FC = () => {
               mentality: 0,
               blockChance: 5,
               avoidChance: 5,
-              criticalPhysicalAttackChance: 0
+              criticalPhysicalAttackChance: 0,
             },
-            'player'
+            'player',
           )
         }
         mob={ratMob()}
       />
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App

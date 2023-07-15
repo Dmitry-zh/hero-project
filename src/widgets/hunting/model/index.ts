@@ -1,1 +1,1 @@
-export * from './use-hunting';
+export * from './use-hunting'

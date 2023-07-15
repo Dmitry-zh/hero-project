@@ -1,11 +1,10 @@
-import { PointsBar } from '~/entities/unit/ui/PointsBar';
-import { UnitModel } from '~/entities/unit';
-import { SkillTile } from '~/entities/skill';
-import { SkillModel } from '~/shared/skill';
+import { UnitModel, PointsBar } from '~/entities/unit'
+import { SkillTile } from '~/entities/skill'
+import { SkillModel } from 'src/shared/model/skill'
 
 interface Props {
-  fighter: UnitModel;
-  onSkillApplied?: (skill: SkillModel) => void;
+  fighter: UnitModel
+  onSkillApplied?: (skill: SkillModel) => void
 }
 function FighterTile({ fighter, onSkillApplied }: Props) {
   return (
@@ -13,7 +12,7 @@ function FighterTile({ fighter, onSkillApplied }: Props) {
       <PointsBar
         current={fighter.currentHitPoints}
         max={fighter.characteristics.hitPoints}
-        color="red"
+        color='red'
       />
       <div></div>
       <div>
@@ -22,7 +21,7 @@ function FighterTile({ fighter, onSkillApplied }: Props) {
         ))}
       </div>
     </div>
-  );
+  )
 }
 
-export { FighterTile };
+export { FighterTile }
