@@ -27,11 +27,13 @@ module.exports = {
     '@feature-sliced',
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:effector/recommended',
+    'plugin:effector/scope',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:prettier/recommended',
   ],
-  'plugins': ['@typescript-eslint', 'prettier', 'import', 'react', 'react-hooks', 'jsx-a11y'],
+  'plugins': ['@typescript-eslint', 'prettier', 'import', 'react', 'react-hooks', 'jsx-a11y', 'effector'],
   'rules': {
     'no-console': 'warn',
     'prettier/prettier': 'error',
@@ -47,11 +49,13 @@ module.exports = {
           'features',
           'entities',
           'shared',
+          'vitest-commands',
+          'vitest-renderers'
         ].map(
-            (layer) => ({
-              pattern: `**/?(*)${layer}{,/**}`,
-              group: 'internal',
-            }),
+          (layer) => ({
+            pattern: `**/?(*)${layer}{,/**}`,
+            group: 'internal',
+          }),
         ),
         pathGroupsExcludedImportTypes: ['builtin'],
         groups: [
